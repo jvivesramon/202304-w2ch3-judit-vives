@@ -1,45 +1,43 @@
-let count = 0
+let count = 0;
 
-const messageOver10 = `El contador no puede pasar de 10.`
-const messageLessThan0 = `El contador no puede bajar de 0.`
+const counterDisplay = document.querySelector("h1");
 
-let counterDisplay = document.querySelector('h1')
-counterDisplay.innerHTML = count
+const buttonForIncrement = document.querySelector(".increment");
+const buttonForDecrement = document.querySelector(".decrement");
+const buttonForRestart = document.querySelector(".restart");
+const messageLimitTNumbers = document.querySelector("span");
 
-const messageLimitTNumbers = document.querySelector('h2')
-messageLimitTNumbers.innerHTML = messageOver10
-messageLimitTNumbers.style.display = 'none'
+const getPlusOne = () => 1;
 
-const buttonForIncrement = document.querySelector('.increment')
-const buttonForDecrement = document.querySelector('.decrement')
-const buttonForRestart = document.querySelector('.restart')
+buttonForIncrement.addEventListener("click", () => {
+  messageLimitTNumbers.style.display = "none";
 
-buttonForIncrement.addEventListener('click', () => {
-  messageLimitTNumbers.style.display = 'none'
-  if(count > 9){
-    messageLimitTNumbers.innerHTML = messageOver10
-    messageLimitTNumbers.style.display = ''
-    return
+  if (counterDisplay.textContent > 9) {
+    messageLimitTNumbers.innerHTML = `El contador no puede pasar de 10.`;
+    messageLimitTNumbers.style.display = "";
+    return;
   }
-  count ++
-  counterDisplay.innerHTML = count
-})
 
-buttonForDecrement.addEventListener('click', () => {
-  messageLimitTNumbers.style.display = 'none'
+  count += getPlusOne();
+  counterDisplay.textContent = count;
+});
 
-  if(count < 1){
-    messageLimitTNumbers.innerHTML = messageLessThan0
-    messageLimitTNumbers.style.display = ''
-    return
+buttonForDecrement.addEventListener("click", () => {
+  messageLimitTNumbers.style.display = "none";
+
+  if (count < 1) {
+    messageLimitTNumbers.innerHTML = `El contador no puede bajar de 0.`;
+    messageLimitTNumbers.style.display = "";
+    return;
   }
-  count --
-  counterDisplay.innerHTML = count
-})
 
-buttonForRestart.addEventListener('click', () => {
-  messageLimitTNumbers.style.display = 'none'
+  count -= getPlusOne();
+  counterDisplay.textContent = count;
+});
 
-  count = 0
-  counterDisplay.innerHTML = count
-})
+buttonForRestart.addEventListener("click", () => {
+  messageLimitTNumbers.style.display = "none";
+
+  count = 0;
+  counterDisplay.textContent = count;
+});
