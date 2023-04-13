@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "app/counter/index.js",
+  "type": "module",
   "scripts": {
     "start": "node .",
     "test": "jest",
